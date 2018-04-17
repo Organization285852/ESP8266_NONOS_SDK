@@ -1,0 +1,28 @@
+
+
+LOCAL struct jsontree_callback wifi_station_callback ={'C',
+						        wifi_station_get,
+							wifi_station_set
+							}£»
+
+
+
+JSONTREE_OBJECT(get_station_config_tree,
+                JSONTREE_PAIR("ssid", &wifi_station_callback),
+                JSONTREE_PAIR("password", &wifi_station_callback));
+
+ºêÕ¹¿ª
+
+                      
+static struct jsontree_pair jsontree_pair_get_station_config_tree[] = {
+									{("ssid"), (struct jsontree_value *)(&wifi_station_callback)},
+
+									{"password",(struct jsontree_value *)(&wifi_station_callback)}
+									}; 
+
+
+static struct jsontree_object get_station_config_tree = {                                \
+        JSON_TYPE_OBJECT,							\
+        sizeof(jsontree_pair_get_station_config_tree)/sizeof(struct jsontree_pair),          \
+        jsontree_pair_get_station_config_tree }
+
